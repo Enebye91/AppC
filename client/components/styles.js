@@ -3,6 +3,7 @@ import { TouchableOpacity } from "react-native";
 import Constants from "expo-constants";
 
 const StatusBarHeight = Constants.statusBarHeight;
+console.log(StatusBarHeight);
 
 export const Colors = {
   turkis: "#83c1c2",
