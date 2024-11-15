@@ -23,7 +23,9 @@ export const Wrapper = styled.View`
 export const Container = styled.View`
   flex: 1;
   width: 100%;
+  display: flex;
   align-items: center;
+  background-color: green;
 `;
 
 export const PageLogo = styled.Image`
@@ -45,6 +47,10 @@ export const SubTitle = styled.Text`
   color: ${brun};
 `;
 
+export const BodyText = styled.Text`
+font-size: 16px; 
+`
+
 export const Tekst = styled.TextInput`
   font-size: 18px;
   color: ${brun};
@@ -55,7 +61,9 @@ export const Tekst = styled.TextInput`
 
 export const Button = styled(TouchableOpacity)`
   width: 100px;
-  height: 150px;
+  height: 40px;
+  border-radius: 24px;
+  color: ${offwhite};
   background-color: ${brun};
 `;
 
@@ -63,6 +71,57 @@ export const FormArea = styled.View`
   width: 90%;
   height: 300px;
   background-color: ${offwhite};
+`;
+
+export const LoginContainer = styled.View`
+  width: 250px;
+  height: 210px;
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const NameHolder = styled.TextInput`
+  width: 100px;
+  height: 40px;
+  border: 1px solid grey;
+  border-radius: 24px;
+  padding: 10px;
+`;
+
+export const Username = styled.TextInput`
+  width: 200px;
+  height: 40px;
+  border: 1px solid grey;
+  border-radius: 24px;
+  padding: 10px;
+`;
+
+export const Password = styled.TextInput`
+  width: 200px;
+  height: 40px;
+  border: 1px solid grey;
+  border-radius: 24px;
+  padding: 10px;
+`;
+
+export const Checkbox = styled(TouchableOpacity)`
+  width: 25px;
+  height: 25px;
+
+  border-radius: 5px;
+  background-color: lime;
+`;
+
+export const ButtonText = styled.Text`
+  font-size: 18px;
+`;
+
+export const LoginButton = styled(TouchableOpacity)`
+  width: 200px;
+  height: 40px;
+  border-radius: 24px;
+  color: ${offwhite};
+  background-color: ${brun};
 `;
 
 // export const email = styled.Text`

@@ -1,12 +1,14 @@
+import React from "react";
 import {
   Wrapper,
   Container,
   PageLogo,
   Title,
   SubTitle,
+  Button,
 } from "../components/styles";
 
-export default function LandingPage() {
+export default function LandingPage({ navigation }) {
   return (
     <>
       <Wrapper>
@@ -14,7 +16,15 @@ export default function LandingPage() {
           <PageLogo />
           <Title>Clarity</Title>
 
-          <SubTitle>Login</SubTitle>
+          <SubTitle>Lorem ipsum</SubTitle>
+          <Button
+            title="Login"
+            onPress={() => navigation.navigate("LoginPage")}
+          />
+          <Button
+            title="Signup"
+            onPress={() => navigation.navigate("SignupPage")}
+          />
         </Container>
       </Wrapper>
     </>
