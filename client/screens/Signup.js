@@ -28,7 +28,7 @@ export default function SignupPage({ navigation }) {
     }
 
     try {
-      const response = await fetch("http://86.52.2.35:5174/signup", {
+      const response = await fetch("http://localhost:5174/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
