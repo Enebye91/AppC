@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Wrapper,
   Container,
   PageLogo,
+  Button,
+  WhiteButton,
   Title,
   SubTitle,
-  Button,
+  ButtonText,
+  BlackBtnText,
 } from "../components/styles";
 
 export default function LandingPage({ navigation }) {
+
+  const [isLoginPressed, setIsLoginPressed] = useState(false);
+  const [isSignupPressed, setIsSignupPressed] = useState(false);
   return (
     <>
       <Wrapper>
@@ -18,13 +24,22 @@ export default function LandingPage({ navigation }) {
 
           <SubTitle>Lorem ipsum</SubTitle>
           <Button
-            title="Login"
+            isPressed={isLoginPressed}
+            onPressIn={() => setIsLoginPressed(true)}
+            onPressOut={() => setIsLoginPressed(false)}
             onPress={() => navigation.navigate("LoginPage")}
-          />
-          <Button
-            title="Signup"
+          >
+            <ButtonText>Login</ButtonText>
+          </Button>
+
+          <WhiteButton
+            isPressed={isSignupPressed}
+            onPressIn={() => setIsSignupPressed(true)}
+            onPressOut={() => setIsSignupPressed(false)}
             onPress={() => navigation.navigate("SignupPage")}
-          />
+          >
+            <BlackBtnText>Signup</BlackBtnText>
+          </WhiteButton>
         </Container>
       </Wrapper>
     </>

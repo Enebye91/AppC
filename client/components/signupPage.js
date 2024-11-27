@@ -1,7 +1,6 @@
 import styled from "styled-components/native";
 import { TouchableOpacity } from "react-native";
 import Constants from "expo-constants";
-// import { useFonts } from "expo-font";
 
 const StatusBarHeight = Constants.statusBarHeight;
 console.log(StatusBarHeight);
@@ -34,27 +33,6 @@ export const HeadlineContainer = styled.View`
   padding-left: 5px;
 `;
 
-export const PageLogo = styled.Image`
-  width: 250px;
-  height: 200px;
-`;
-
-export const Title = styled.Text`
-  font-size: 36px;
-  text-align: center;
-  font-weight: bold;
-  color: ${darkblue};
-  fontfamily: "Roboto-Regular";
-`;
-
-export const SubTitle = styled.Text`
-  font-size: 18px;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
-  color: ${darkblue};
-  fontfamily: "Roboto-Regular";
-`;
-
 export const Headline = styled.Text`
   font-size: 28px;
   font-weight: bold;
@@ -82,62 +60,6 @@ export const Tekst = styled.TextInput`
   background-color: ${offwhite};
 `;
 
-export const Button = styled(TouchableOpacity)`
-  width: 100px;
-  height: 40px;
-  border-radius: 24px;
-  background-color: ${darkblue};
-  box-shadow: 3px 3px 10px #1b5a65;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 12px;
-  transition: transform 0.2s ease;
-  transform: ${({ isPressed }) => (isPressed ? "scale(1.1)" : "scale(1)")};
-`;
-
-export const WhiteButton = styled(TouchableOpacity)`
-  width: 100px;
-  height: 40px;
-  border-radius: 24px;
-  background-color: ${offwhite};
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.2s ease;
-  transform: ${({ isPressed }) => (isPressed ? "scale(1.1)" : "scale(1)")};
-`;
-
-//LoginPage
-export const LoginArea = styled.View`
-  width: 260px;
-  height: 250px;
-  dispaly: flex;
-  flex-direction: column;
-  justify-content: space-around;
-`;
-
-export const LoginPassword = styled.TextInput`
-  width: 260px;
-  height: 40px;
-  border: 1px solid grey;
-  border-radius: 24px;
-  padding: 10px;
-  background-color: ${offwhite};
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-`;
-
-export const RememberContainer = styled.View`
-  width: 150px;
-  height: 40px;
-  padding-left: 4px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
-// Signup Page
 export const NameContainer = styled.View`
   width: 260px;
   height: 50px;
@@ -176,17 +98,6 @@ export const Username = styled.TextInput`
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
 `;
 
-export const Email = styled.TextInput`
-  width: 260px;
-  height: 40px;
-  border: 1px solid grey;
-  border-radius: 24px;
-  padding: 10px;
-  margin-top: 10px;
-  background-color: ${offwhite};
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-`;
-
 export const Password = styled.TextInput`
   width: 260px;
   height: 40px;
@@ -207,11 +118,11 @@ export const CheckContainer = styled.View`
   padding: 10px;
 `;
 
-export const Checkbox = styled.View`
+export const Checkbox = styled(TouchableOpacity)`
   width: 20px;
   height: 20px;
   border-radius: 5px;
-  background-color: ${(props) => (props.isChecked ? "black" : "#eaebe6")};
+  background-color: ${offwhite};
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
 `;
 
@@ -244,5 +155,5 @@ export const LoginButton = styled(TouchableOpacity)`
   background-color: ${darkblue};
   box-shadow: 3px 3px 10px #1b5a65;
   transition: transform 0.2s ease;
-  transform: ${({ isPressed }) => (isPressed ? "scale(1.1)" : "scale(1)")};
+  // transform: ${({ isPressed }) => (isPressed ? "scale(1.1)" : "scale(1)")};
 `;

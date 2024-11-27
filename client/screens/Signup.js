@@ -1,46 +1,54 @@
 import React, { useState } from "react";
+import { Text } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
 import {
   Wrapper,
   Container,
-  SubTitle,
+  HeadlineContainer,
+  Headline,
+  NameContainer,
   NameHolder,
+  Email,
   Username,
+  FormArea,
   Password,
-  ButtonText,
-  Checkbox,
   LoginButton,
+  ButtonText,
   BodyText,
+  BlueText,
 } from "../components/styles";
-import { Text } from "react-native";
 
-export default function SignupPage({ navigation }) {
+export default function SignupPage() {
+  const navigation = useNavigation();
+  const [isSignupPressed, setIsSignupPressed] = useState(false);
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleSignup = async () => {
-    if (password !== confirmPassword) {
-      setErrorMessage("Passwords do not match");
+    if (!firstname || !lastname || !email || !username || !password) {
+      setErrorMessage("Please fill out all fields.");
       return;
     }
 
     try {
-      const response = await fetch("http://localhost:5174/signup", {
+      const response = await fetch("http://localhost:5174/api/signup/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ firstname, lastname, username, password }),
+        body: JSON.stringify({
+          firstname,
+          lastname,
+          email,
+          username,
+          password,
+        }),
       });
-
-      if (!response.ok) {
-        const data = await response.json();
-        setErrorMessage(data.message || "Signup failed");
-        return;
-      }
 
       const data = await response.json();
 
@@ -58,46 +66,59 @@ export default function SignupPage({ navigation }) {
   return (
     <Wrapper>
       <Container>
-        <SubTitle>Signup</SubTitle>
-        <NameHolder
-          placeholder="Firstname"
-          value={firstname}
-          onChangeText={(text) => setFirstname(text)}
-        />
-        <NameHolder
-          placeholder="lastname"
-          value={lastname}
-          onChangeText={(text) => setLastname(text)}
-        />
-        <Username
-          placeholder="Username"
-          value={username}
-          onChangeText={(text) => setUsername(text)}
-        />
+        <HeadlineContainer>
+          <Headline>Signup</Headline>
+        </HeadlineContainer>
 
-        <Password
-          placeholder="Password"
-          secureTextEntry
-          value={password}
-          onChangeText={(text) => setPassword(text)}
-        />
+        <NameContainer>
+          <NameHolder
+            placeholder="Firstname"
+            value={firstname}
+            onChangeText={(text) => setFirstname(text)}
+          />
+          <NameHolder
+            placeholder="Lastname"
+            value={lastname}
+            onChangeText={(text) => setLastname(text)}
+          />
+        </NameContainer>
 
-        <Password
-          placeholder="Confirm password"
-          secureTextEntry
-          value={confirmPassword}
-          onChangeText={(text) => setConfirmPassword(text)}
-        />
+        <FormArea>
+          <Email
+            placeholder="Email"
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
+          <Username
+            placeholder="Username"
+            value={username}
+            onChangeText={(text) => setUsername(text)}
+          />
+          <Password
+            placeholder="Password"
+            secureTextEntry={true}
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+          />
 
-        {errorMessage ? <Text>{errorMessage}</Text> : null}
+          {errorMessage ? <Text>{errorMessage}</Text> : null}
 
-        <ButtonText> I Agree with privacy and policy</ButtonText>
-        <Checkbox></Checkbox>
+          <LoginButton title="Sign Up" onPress={handleSignup}>
+            <ButtonText
+              isPressed={isSignupPressed}
+              onPressIn={() => setIsSignupPressed(true)}
+              onPressOut={() => setIsSignupPressed(false)}
+            >
+              Signup
+            </ButtonText>
+          </LoginButton>
 
-        <LoginButton title="Sign Up" onPress={handleSignup}>
-          <ButtonText>Signup</ButtonText>
-        </LoginButton>
-        <BodyText>Already have an account? Sign in</BodyText>
+          <BodyText>
+            Already have an account? <BlueText>Login</BlueText>
+          </BodyText>
+        </FormArea>
       </Container>
     </Wrapper>
   );
