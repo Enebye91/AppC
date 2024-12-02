@@ -1,14 +1,3 @@
-// import User from "../models/User.js";
-
-// export const findUserByEmail = async (email) => User.findOne({ email });
-
-// export const findUserByUsername = async (username) =>
-//   User.findOne({ username });
-
-// export const createUser = async (userData) => {
-//   const user = new User(userData);
-//   return await user.save();
-// };
 import User from "../models/User.js";
 
 export const findUserByUsername = async (username) => {
@@ -27,7 +16,14 @@ export const findUserByEmail = async (email) => {
   }
 };
 
-// Opretter en ny bruger
+export const findUserById = async (userId) => {
+  try {
+    return await User.findById(userId);
+  } catch (error) {
+    throw new Error("User not found");
+  }
+};
+
 export const createUser = async (userData) => {
   try {
     const user = new User(userData);

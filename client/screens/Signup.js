@@ -48,6 +48,7 @@ export default function SignupPage() {
           username,
           password,
         }),
+        credentials: "include",
       });
 
       const data = await response.json();

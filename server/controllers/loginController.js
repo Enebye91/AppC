@@ -1,4 +1,5 @@
 import { findUserByUsername } from "../repositories/userRepository.js";
+import jwt from "jsonwebtoken";
 
 export const login = async (req, res) => {
   const { username, password } = req.body;
@@ -16,8 +17,22 @@ export const login = async (req, res) => {
       return res.status(401).json({ message: "Invalid password" });
     }
 
+    const token = jwt.sign(
+      { userId: user._id, username: user.username },
+      process.env.JWT_SECRET,
+      { expiresIn: "2h" }
+    );
+
+    res.cookie("authToken", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 60 * 60 * 2000,
+    });
+
     res.status(200).json({ message: "Login successful", user: user.username });
   } catch (error) {
+    console.error("Login error: ", error);
     res
       .status(500)
       .json({ message: "Something went wrong", error: error.message });

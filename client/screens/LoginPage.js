@@ -35,6 +35,7 @@ export default function LoginPage() {
           username,
           password,
         }),
+        // credentials: "include",
       });
 
       const data = await response.json();
@@ -46,18 +47,6 @@ export default function LoginPage() {
         console.error("Login failed", response.status);
         setError(data.message || "Invalid username or password");
       }
-      // if (response.ok) {
-      //   const data = await response.json();
-      //   console.log(data);
-      // } else {
-      //   console.error("Login failed", response.status);
-      // }
-
-      // if (response.status === 200) {
-      //   navigation.navigate("UserPage");
-      // } else {
-      //   setError(data.message || "Invalid username or password");
-      // }
     } catch (err) {
       console.error("Error", err);
       setError("Something went wrong");
