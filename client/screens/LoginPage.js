@@ -10,10 +10,7 @@ import {
   Username,
   LoginPassword,
   ButtonText,
-  Checkbox,
   LoginButton,
-  RememberContainer,
-  BlueText,
 } from "../components/styles";
 
 export default function LoginPage() {
@@ -73,10 +70,7 @@ export default function LoginPage() {
           ></LoginPassword>
           {/* {errorMessage ? <Text>{errorMessage}</Text> : null} */}
           {error ? <Text style={{ color: "red" }}>{error}</Text> : null}
-          <RememberContainer>
-            <BlueText>Remember me</BlueText>
-            <Checkbox></Checkbox>
-          </RememberContainer>
+
           <LoginButton onPress={handleLogin}>
             <ButtonText>Login</ButtonText>
           </LoginButton>

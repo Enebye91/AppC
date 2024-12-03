@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, StyleSheet } from "react-native";
 import Constants from "expo-constants";
 // import { useFonts } from "expo-font";
 
@@ -112,7 +112,7 @@ export const WhiteButton = styled(TouchableOpacity)`
 //LoginPage
 export const LoginArea = styled.View`
   width: 260px;
-  height: 250px;
+  height: 200px;
   dispaly: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -128,15 +128,6 @@ export const LoginPassword = styled.TextInput`
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
 `;
 
-export const RememberContainer = styled.View`
-  width: 150px;
-  height: 40px;
-  padding-left: 4px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
 // Signup Page
 export const NameContainer = styled.View`
   width: 260px;
@@ -148,7 +139,7 @@ export const NameContainer = styled.View`
 
 export const FormArea = styled.View`
   width: 260px;
-  height: 260px;
+  height: 300px;
   dispaly: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -199,12 +190,12 @@ export const Password = styled.TextInput`
 `;
 
 export const CheckContainer = styled.View`
-  width: 240px;
-  height: 50px;
+  width: 175px;
+  height: 40px;
+  padding: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 10px;
 `;
 
 export const Checkbox = styled.View`
@@ -246,3 +237,16 @@ export const LoginButton = styled(TouchableOpacity)`
   transition: transform 0.2s ease;
   transform: ${({ isPressed }) => (isPressed ? "scale(1.1)" : "scale(1)")};
 `;
+
+export const styles = StyleSheet.create({
+  checkbox: {
+    width: 20,
+    height: 20,
+    borderRadius: 5,
+    backgroundColor: offwhite,
+    boxShadow: "3px 3px 10px rgba(0, 0, 0, 0.2)",
+  },
+  checkboxSelected: {
+    backgroundColor: darkblue,
+  },
+});

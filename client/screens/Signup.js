@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text } from "react-native";
+import { Text, View, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import {
@@ -17,6 +17,8 @@ import {
   ButtonText,
   BodyText,
   BlueText,
+  CheckContainer,
+  styles,
 } from "../components/styles";
 
 export default function SignupPage() {
@@ -28,10 +30,16 @@ export default function SignupPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [cookieAccepted, setCookieAccepted] = useState(false);
 
   const handleSignup = async () => {
     if (!firstname || !lastname || !email || !username || !password) {
       setErrorMessage("Please fill out all fields.");
+      return;
+    }
+
+    if (!cookieAccepted) {
+      setErrorMessage("You must accept the cookie policy");
       return;
     }
 
@@ -47,8 +55,9 @@ export default function SignupPage() {
           email,
           username,
           password,
+          cookieConsent: cookieAccepted,
         }),
-        credentials: "include",
+        // credentials: "include",
       });
 
       const data = await response.json();
@@ -103,6 +112,20 @@ export default function SignupPage() {
             value={password}
             onChangeText={(text) => setPassword(text)}
           />
+          <View>
+            <CheckContainer>
+              <BlueText>
+                {cookieAccepted ? "Cookies accepted" : "Accept cookies"}
+              </BlueText>
+              <Pressable
+                onPress={() => setCookieAccepted(!cookieAccepted)}
+                style={[
+                  styles.checkbox,
+                  cookieAccepted && styles.checkboxSelected,
+                ]}
+              />
+            </CheckContainer>
+          </View>
 
           {errorMessage ? <Text>{errorMessage}</Text> : null}
 

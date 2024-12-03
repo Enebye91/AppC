@@ -32,6 +32,7 @@ const userSchema = new mongoose.Schema({
     // minlength: [8, "Password must be at least 4 characters long"],
     // maxlenght: [12, "Password must be less then 12 characters long"],
   },
+  cookieConsent: { type: Boolean, default: false}, 
 });
 
 userSchema.pre("save", async function (next) {

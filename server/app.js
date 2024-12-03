@@ -14,13 +14,6 @@ connectDB();
 
 app.use(cors({ origin: "*", methods: "GET,POST", credentials: true }));
 
-// app.use(
-//   cors({
-//     origin: ["https://m9oerjy-anonymous-8081.exp.direct"],
-//     methods: "GET,POST",
-//     credentials: true,
-//   })
-// );
 app.use(express.json());
 app.use(express.static("public"));
 app.use(cookieParser());
