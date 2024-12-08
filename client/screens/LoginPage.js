@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Text } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage"; 
 
 import {
   Wrapper,
@@ -32,13 +33,18 @@ export default function LoginPage() {
           username,
           password,
         }),
-        // credentials: "include",
       });
 
       const data = await response.json();
 
       if (response.ok) {
         console.log("Logged in successfully");
+
+
+        await AsyncStorage.setItem("token", data.token);
+        console.log("Token saved:", data.token);
+
+     
         navigation.navigate("UserPage");
       } else {
         console.error("Login failed", response.status);
@@ -62,13 +68,11 @@ export default function LoginPage() {
             value={username}
             onChangeText={(text) => setUsername(text)}
           />
-
           <LoginPassword
             placeholder="Password"
             value={password}
             onChangeText={(text) => setPassword(text)}
-          ></LoginPassword>
-          {/* {errorMessage ? <Text>{errorMessage}</Text> : null} */}
+          />
           {error ? <Text style={{ color: "red" }}>{error}</Text> : null}
 
           <LoginButton onPress={handleLogin}>

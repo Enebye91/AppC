@@ -1,12 +1,9 @@
 import express from "express";
-import authToken from "../middleware/authToken.js";
-import { user } from "../controllers/userpageController.js";
+import { getUserData } from "../controllers/userPageController.js";
+import authenticateToken from "../middleware/authToken.js";
 
-const userRoute = express.Router();
+const router = express.Router();
 
-userRoute.get("/UserPage", authToken, user);
-// userRoute.get("/UserPage", authToken, (req, res) => {
-//   res.json({ message: "Welcome!", user: req.user });
-// });
+router.get("/", authenticateToken, getUserData);
 
-export default userRoute;
+export default router;
