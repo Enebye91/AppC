@@ -43,8 +43,7 @@ export const SubTitle = styled.Text`
 `;
 
 export const Box = styled.View`
-width: 90%; 
-height: 50px; 
-background-color: pink; 
-
-`
+  width: 90%;
+  height: 50px;
+  background-color: pink;
+`;

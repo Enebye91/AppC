@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Text } from "react-native";
+import Cookies from "js-cookie";
+
 import {
   Wrapper,
   Container,
@@ -8,20 +10,32 @@ import {
 } from "../components/UserPageStyle.js";
 
 export default function UserPage() {
-  // const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
+      // const token = Cookies.get("authToken");
+      // if (!token) {
+      //   setError("Token not found. Please log in.");
+      //   return;
+      // }
+
       try {
-        const response = await fetch("http://localhost:5174/api/user", {
-          method: "GET",
-          credentials: "include",
-        });
+        const response = await fetch(
+          "http://localhost:5174/api/user/UserPage",
+          {
+            method: "GET",
+            // Authorization: `Bearer ${token}`,
+            // credentials: "include",
+          }
+        );
 
         const data = await response.json();
+        console.log(data);
 
         if (response.ok) {
+          setUserData(userData);
         } else {
           setError(data.message || "Failed to fetch user data");
         }
@@ -43,10 +57,12 @@ export default function UserPage() {
       </Wrapper>
     );
   }
+
   return (
     <Wrapper>
       <Container>
         <SubTitle>Journal</SubTitle>
+
         <Box>
           <Text>Symptomer</Text>
         </Box>

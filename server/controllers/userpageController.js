@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 import { findUserById } from "../repositories/userRepository.js";
 
 export const user = async (req, res) => {
+  console.log("Cookies received:", req.cookies); 
   const token = req.cookies.authToken;
 
   if (!token) {

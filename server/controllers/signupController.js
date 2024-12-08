@@ -5,7 +5,8 @@ import {
 } from "../repositories/userRepository.js";
 
 export const signup = async (req, res) => {
-  const { firstname, lastname, email, username, password, cookieConsent } = req.body;
+  const { firstname, lastname, email, username, password, cookieConsent } =
+    req.body;
 
   if (!cookieConsent) {
     return res

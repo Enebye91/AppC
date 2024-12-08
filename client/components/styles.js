@@ -55,6 +55,12 @@ export const SubTitle = styled.Text`
   fontfamily: "Roboto-Regular";
 `;
 
+export const Box = styled.View`
+  width: 90%;
+  height: 50px;
+  background-color: pink;
+`;
+
 export const Headline = styled.Text`
   font-size: 28px;
   font-weight: bold;
