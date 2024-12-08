@@ -19,19 +19,21 @@ export const login = async (req, res) => {
     console.log(process.env);
 
     const token = jwt.sign(
-      { userId: user._id, username: user.username },
+      { username },
       process.env.JWT_SECRET,
+      // const token = jwt.sign(
+      //   { userId: user._id, username: user.username },
+      // process.env.JWT_SECRET,
 
       { expiresIn: "30d" }
     );
 
     res.cookie("authToken", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production" ? true : false,
+      // secure: process.env.NODE_ENV === "production" ? true : false,
       // secure: process.env.NODE_ENV === "production",
-      // secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-
+      secure: true,
+      sameSite: "None",
       maxAge: 30 * 24 * 60 * 60 * 1000,
     });
     console.log("Token generated:", token);
@@ -45,4 +47,3 @@ export const login = async (req, res) => {
       .json({ message: "Something went wrong", error: error.message });
   }
 };
-

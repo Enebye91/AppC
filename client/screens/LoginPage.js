@@ -32,12 +32,13 @@ export default function LoginPage() {
           username,
           password,
         }),
-        credentials: "include",
+        // credentials: "include",
       });
 
       const data = await response.json();
 
       if (response.ok) {
+        console.log("Logged in successfully");
         navigation.navigate("UserPage");
       } else {
         console.error("Login failed", response.status);
