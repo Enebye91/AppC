@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Text } from "react-native";
-import Cookies from "js-cookie";
 
 import {
   Wrapper,
@@ -15,19 +14,13 @@ export default function UserPage() {
 
   useEffect(() => {
     const fetchUserData = async () => {
-      // const token = Cookies.get("authToken");
-      // if (!token) {
-      //   setError("Token not found. Please log in.");
-      //   return;
-      // }
-
       try {
         const response = await fetch(
           "http://localhost:5174/api/user/UserPage",
           {
             method: "GET",
             // Authorization: `Bearer ${token}`,
-            // credentials: "include",
+            credentials: "include",
           }
         );
 
@@ -35,7 +28,7 @@ export default function UserPage() {
         console.log(data);
 
         if (response.ok) {
-          setUserData(userData);
+          setUserData(data.user);
         } else {
           setError(data.message || "Failed to fetch user data");
         }

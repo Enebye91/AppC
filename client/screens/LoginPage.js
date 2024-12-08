@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Text } from "react-native";
-import { Cookies } from "js-cookie";
-// import { Cookies } from "@react-native-cookies/cookies";
+
 import {
   Wrapper,
   Container,
@@ -33,25 +32,13 @@ export default function LoginPage() {
           username,
           password,
         }),
-        // credentials: "include",
+        credentials: "include",
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        // await Cookies.set("authToken", data.token, {
-        //   path: "/",
-        //   secure: true,
-        //   httpOnly: false,
-
-        //   sameSite: "lax",
-        // });
-        // Cookies.set("authToken", data.token);
-        // document.cookie = `authToken=${data.token}; path=/; secure; samesite=lax, httpOnly: false,`;
-        console.log("Login successful!");
-
         navigation.navigate("UserPage");
-        // document.cookie = "token=" + data.token + "; path=/";
       } else {
         console.error("Login failed", response.status);
         setError(data.message || "Invalid username or password");
