@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "backend",
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^2.1.0",
     "@react-native-cookies/cookies": "^6.2.1",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.7",
