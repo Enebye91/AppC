@@ -256,3 +256,54 @@ export const styles = StyleSheet.create({
     backgroundColor: darkblue,
   },
 });
+
+//UserPage
+export const CheckinContainer = styled(TouchableOpacity)`
+  width: 500px;
+  height: 500px;
+  background-color: ${offwhite};
+`;
+
+export const Sidebar = styled.View`
+  width: 250px;
+  height: 500px;
+  background-color: ${darkblue};
+`;
+
+export const NavButton = styled(TouchableOpacity)`
+  width: 200px;
+  height: 40px;
+  background-color: "transparent";
+  margin-bottom: 12px;
+  transition: transform 0.2s ease;
+  transform: ${({ isPressed }) => (isPressed ? "scale(1.1)" : "scale(1)")};
+`;
+
+//Checkin
+export const CheckWrapper = styled.View`
+  flex: 1;
+  heigth: 2000px;
+  padding: 25px;
+  padding-top: ${StatusBarHeight + 10}px;
+  background-color: ${offwhite};
+`;
+export const Grid = styled.View`
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+`;
+
+export const InButton = styled(TouchableOpacity)`
+  width: 150px;
+  height: 40px;
+  margin-bottom: 12px;
+  background-color: ${(props) => (props.selected ? "#257586" : "#83c1c2")};
+`;
+
+export const NextButton = styled(TouchableOpacity)`
+  width: 150px;
+  height: 40px;
+  border-radius: 24px;
+  background-color: ${darkblue};
+  margin-bottom: 12px;
+`;

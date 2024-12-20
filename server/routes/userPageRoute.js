@@ -1,5 +1,5 @@
 import express from "express";
-import { getUserData } from "../controllers/userPageController.js";
+import { getUserData } from "../controllers/userpageController.js";
 import authenticateToken from "../middleware/authToken.js";
 
 const router = express.Router();

@@ -35,26 +35,6 @@ const userSchema = new mongoose.Schema({
   cookieConsent: { type: Boolean, default: false },
 });
 
-const registretionSchema = new mongoose.Schema({
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
-  },
-  symptoms: {
-    type: [String],
-  },
-  nutrisian: {
-    type: [String],
-  },
-  mood: {
-    type: String,
-  },
-  energiLevel: {
-    type: String,
-  },
-});
-
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
 
